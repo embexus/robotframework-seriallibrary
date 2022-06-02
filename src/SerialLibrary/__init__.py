@@ -172,6 +172,9 @@ class SerialLibrary:
 
         If encoding is not specified, instance's default encoding will be used.
         """
+        if not isinstance(ustring, unicode_):
+            ustring = unic(ustring)
+
         encoding_mode = encoding_mode or 'strict'
         encoding = encoding or self._encoding or 'hexlify'
         return ustring.encode(encoding, encoding_mode)
